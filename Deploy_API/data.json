@@ -1,0 +1,36 @@
+{
+    "message" : "Success get all rating",
+    "data" : {
+        "average_rating" : 3.7,
+        "details" : [
+            {
+                "id" : "e80-bsadaf-asfafa-fdbbdjgmoa-feju193",
+                "lesson_id" : "1",
+                "nidn" : 1,
+                "nim" : 12287662,
+                "comment" : "He is good",
+                "createdAt" : "ssss",
+                "updatedAt" : "ssss"
+            },
+            {
+                "id" : "e80-bsadaf-asfafa-fdbbdjgmoa-feju193",
+                "lesson_id" : "2",
+                "nidn" : 2,
+                "nim" : 12287662,
+                "comment" : "I don't like the materials",
+                "createdAt" : "ssss",
+                "updatedAt" : "ssss"
+            },
+            {
+                "id" : "e80-bsadaf-asfafa-fdbbdjgmoa-feju193",
+                "lesson_id" : "3",
+                "nidn" : 3,
+                "nim" : 12287662,
+                "comment" : "boring",
+                "createdAt" : "ssss",
+                "updatedAt" : "ssss"
+            }
+        ]
+    
+    }
+}

@@ -71,9 +71,8 @@ def model_predict(random_text):
     prediction = model.predict(random_text_sequence)[0]
     predicted_label = np.argmax(prediction)
     sentiment = "Positive" if predicted_label == 2 else "Neutral" if predicted_label == 1 else "Negative"
-    return sentiment, prediction
+    return sentiment
 
-result, s= model_predict(random_text)
+result=  model_predict(random_text)
 print(result)
-print(s)
 print("================================")
