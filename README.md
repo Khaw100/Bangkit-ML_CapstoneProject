@@ -62,7 +62,7 @@ Here are the steps to run the "main.py" program:
 ```Deactivate```
 
 # 5. Contact
-- Muhammad Rakha Wiratama – rakhawiratama10@gmail.com
+- Muhammad Rakha Wiratama – rakhawiratama10@gmail.com - Khaw100
 - Andiny N. R – 
 - Elma Margaretha Br Sebayang – elmamargarethasby@gmail.com
   
