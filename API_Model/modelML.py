@@ -16,6 +16,9 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.feature_extraction.text import TfidfVectorizer
 from tensorflow.keras import optimizers
 
+nltk.download('wordnet')
+nltk.download('punkt')
+nltk.download('stopwords')
 
 df = pd.read_csv('ReviewsEN.csv')
 
@@ -28,6 +31,7 @@ df['sentiment'] = df['sentiment'].replace([-1], 0)
 
 # Apply lower function
 df['reviews'] = df['reviews'].apply(str.lower)
+
 
 """## Hyper Parameter"""
 
@@ -55,12 +59,7 @@ for i in range(len(df)):
   removedPunctuation_text.append(remove_punctuation(df['reviews'][i]))
 
 df['reviews'] = removedPunctuation_text
-df['reviews'].values
-
 """## Lemmatizing"""
-
-# nltk.download('wordnet')
-# nltk.download('punkt')
 
 def lemmatize_text(text):
     lemmatizer = WordNetLemmatizer()
@@ -84,7 +83,6 @@ def remove_numbers(text):
     return cleaned_text
 
 df['reviews'] = df['reviews'].apply(remove_numbers)
-
 """## Random Sampling"""
 
 random.seed(42)
@@ -98,7 +96,6 @@ selected_indices = random.sample(indices, MAX_EXAMPLES)
 # Select the corresponding sentences and labels based on the sampled indices
 sentences = df.loc[selected_indices, 'reviews']
 labels = df.loc[selected_indices, 'sentiment']
-
 
 """# Training - Validation Split"""
 
@@ -140,7 +137,7 @@ def remove_stopwords(sentence, data):
                          "one", "two","three","four","five","098"]
     more_words = [ "hw","won't","lpu","weren't","mr","mcq","shes", "shes","india","in","hes","shes","me", "dr", "nlandu", "ko","it","1st", "omr", "ha", "upto","ca", "soo", "cd", "ive","po","cse", "chem", "un","of",
                   "mte", "omr","mte's","ca's","ete's","jnv","ip","sir","its","wks","prob","python","java","lattc","ol","ived","elsewhere", "mother","wouldnt","car",
-                  "si", "sat","we","home","hot","god","ice","money's","money","even","about","thats", "wks", "thurs", "months", "sir", "go", "jnv", "ip", "today", "today's", "linux", "github",
+                  "si", "sat","we","home","hot","god","ice","money's","money","even","about","thats", "wks", "thurs", "months", "sir", "go", "jnv", "ip", "today", "today's", "linux", "github","doe"
                   "lt", "ums", "superb", "at", "cgpa","ques", "brain's", "mcqs", "ve", "say", "pc", "viva", "after", "before", "draw", "asst", "only", "rich", "never", "went", "pcs", "gk", "one's",
                   "co", "duty", "gona", "attendnce","same", "that's", "hahahah", "ad's", "university's", "relly", "build", "cricket", "said", "hall", "profs", "guy's", "can", "along", "archieve", "bag",
                   "part", "master", "push", "or", "add", "were", "virginia","human", "bless", "clean", "count", "onlineopen", "ounce", "brushing", "zero", "mail", "fys", "lowell", "stets", "untill", "until",
@@ -173,12 +170,10 @@ def remove_stopwords(sentence, data):
 
     return sentence
 
-# nltk.download('punkt')
-# nltk.download('stopwords')
-
 stop_words = set(stopwords.words('english'))
 stop_words_list = list(stop_words)
 stopwords_data = stopwords_data + stop_words_list
+
 
 vectorizer = TfidfVectorizer(stop_words='english')
 response = vectorizer.fit_transform(df['reviews'])
@@ -198,7 +193,6 @@ def fit_tokenizer(sentences, oov_token):
 tokenizer = fit_tokenizer(train_sentences, OOV_TOKEN)
 word_index = tokenizer.word_index
 VOCAB_SIZE = len(word_index)
-
 def seq_pad_and_trunc(sentences, tokenizer, padding, truncating, maxlen):
     sequences = tokenizer.texts_to_sequences(sentences)
     pad_trunc_sequences = pad_sequences(sequences, maxlen= maxlen, padding = padding, truncating = truncating)
