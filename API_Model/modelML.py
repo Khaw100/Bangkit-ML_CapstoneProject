@@ -1,21 +1,21 @@
 import random
-import pickle
 import re
 import string
 import numpy as np
 import pandas as pd
 import tensorflow as tf
 import nltk
-from sklearn.metrics import precision_score, recall_score, f1_score
 from nltk.stem import WordNetLemmatizer
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
-from tensorflow import keras
+# from tensorflow import keras
+import tensorflow.keras
 from tensorflow.keras import layers
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.feature_extraction.text import TfidfVectorizer
 from tensorflow.keras import optimizers
+
 
 df = pd.read_csv('ReviewsEN.csv')
 
@@ -59,8 +59,8 @@ df['reviews'].values
 
 """## Lemmatizing"""
 
-nltk.download('wordnet')
-nltk.download('punkt')
+# nltk.download('wordnet')
+# nltk.download('punkt')
 
 def lemmatize_text(text):
     lemmatizer = WordNetLemmatizer()
@@ -173,8 +173,8 @@ def remove_stopwords(sentence, data):
 
     return sentence
 
-nltk.download('punkt')
-nltk.download('stopwords')
+# nltk.download('punkt')
+# nltk.download('stopwords')
 
 stop_words = set(stopwords.words('english'))
 stop_words_list = list(stop_words)
@@ -201,7 +201,7 @@ VOCAB_SIZE = len(word_index)
 
 def seq_pad_and_trunc(sentences, tokenizer, padding, truncating, maxlen):
     sequences = tokenizer.texts_to_sequences(sentences)
-    pad_trunc_sequences = pad_sequences(sequences, maxlen= MAXLEN, padding = PADDING, truncating = TRUNCATING)
+    pad_trunc_sequences = pad_sequences(sequences, maxlen= maxlen, padding = padding, truncating = truncating)
     return pad_trunc_sequences
 
 train_pad_trunc_seq = seq_pad_and_trunc(train_sentences, tokenizer, PADDING, TRUNCATING, MAXLEN)
