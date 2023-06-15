@@ -1,11 +1,9 @@
 import tensorflow as tf
 import numpy as np
-from modelML import *
+from modelFunction import *
 
 # Load Model
 mdl = tf.keras.models.load_model('model.h5')
-# Random Text as an Input
-random_text = "Smart , but can't teach"
 
 def model_predict(random_text):
     random_text_sequence = tokenizer.texts_to_sequences([random_text])
