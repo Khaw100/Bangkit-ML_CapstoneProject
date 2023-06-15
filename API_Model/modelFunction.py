@@ -124,7 +124,7 @@ def remove_stopwords(sentence, stopwords_data):
                   "prep", "appears", "giulia", "yuk", "memo", "ton", "110q", "unit", "80","re","by","order","fob", "sit", "from","art", "org", "4d", "3d", "cinema", "iii", "cal", "both", "sundays", "todays", "ad",
                   "yoursel","yourself", "kiss", "it'll", "obayani's", "anal", "pgs", "csci", "hw", "more", "able", "lecturer", "lecturer's", "student", "stundet's", "it", "want", "you","he's", "she's"]
     more =  [
-    'a', 'about', 'above', 'after', 'again', 'against', "ain't", 'all', 'am', 'an', 'and', 'any', 'are', 'as',
+    'a', 'about', 'above', 'after', 'again', 'against', "ain't", 'all', 'am', 'an', 'and', 'any', 'are', 'as', "'", ",", ".", "'s",
     'at', 'be', 'because', 'been', 'before', 'being', 'below', 'between', 'both', 'by', 'doing', 'down', 'during', 'each', 
     'few','for', 'from', 'further', 'had', 'hadn\'t', 'has', 'hasn\'t', 'have', 'haven\'t', 'having', 'he', 'he\'d', 'he\'ll',
     'he\'s', 'her', 'here', 'here\'s', 'hers', 'herself', 'him', 'himself', 'his', 'how', 'how\'s', 'i', 'i\'d', 'i\'ll',
